@@ -1,5 +1,5 @@
 {
-	"name": "tablebarchart",
+	"name": "TableBarChart",
 	"version": "1.0.0",
 	"title": "Table Bar Chart",
 	"author": { 
@@ -26,5 +26,6 @@
 	"homepage": "http://wiki.aiwsolutions.net/gQEYw",
 	"docs": "http://wiki.aiwsolutions.net/gQEYw",
 	"demo": "http://wiki.aiwsolutions.net/gQEYw",
-	"download": "https://github.com/hnvcam/tablebarchart"	
+	"download": "https://github.com/hnvcam/tablebarchart",
+	"bugs": "https://github.com/hnvcam/tablebarchart/issues"
 }
