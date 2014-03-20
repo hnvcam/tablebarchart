@@ -20,7 +20,7 @@
    background: #f0f0f0;
    border-radius: 4px;
    bottom: 0;
-   position: absolute;
+   position: relative;
    text-align: left;
    width: 100%;
 }
@@ -58,7 +58,12 @@
 .y-axis {
    color: #555;
    position: absolute;
-   text-align: right;
+   text-align: left;
+}
+
+.y-axis ul {
+	padding: 0px;
+	margin: 0px;
 }
 
 .y-axis li {
@@ -68,6 +73,8 @@
 
 .y-axis li span {
    display: block;
+   position: relative;
+   text-align: right;
 }
 
 .bars {
@@ -79,13 +86,22 @@
 	float: left;
 	height: 100%;
 	position: relative;
+	margin: 0 10px;
 }
 .bar {
 	border-radius: 3px 3px 0 0;
 	bottom: 0;
-	cursor: pointer;	
 	position: absolute;
 	text-align: center;
+	#cursor: pointer;
+	display: block;
+}
+
+.bar span {
+	margin-top: -25px;
+	*zoom: 1;
+	display: none;
+	position: relative;
 }
 
 .item-0 {

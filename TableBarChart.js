@@ -104,11 +104,26 @@ jQuery.fn.tableBarChart = function(targetDiv, caption, reverseGroup) {
 		return result;
 	}
 	
+	function animateBar(index) {
+		$('.bar.item-' + index).each(function() {
+			var bar = $(this);
+			bar.css('height', 0);
+			var value = bar.attr('value');
+			bar.animate({
+					'height': value
+			}, 800);
+		});
+	}
+	
 	function getLegendHTML() {
 		var legendContainer = $('<ul class="legend"></ul>');
 		$(legends).each(function(index) {
-			legendContainer.append('<li><span class="icon item-' + index + '"></span>' + 
+			var legendItem = $('<li><span class="icon item-' + index + '"></span>' + 
 				this + '</li>');
+			legendItem.mouseenter(function() {
+				animateBar(index);
+			});
+			legendContainer.append(legendItem);
 		});
 		return legendContainer;
 	}
@@ -118,8 +133,18 @@ jQuery.fn.tableBarChart = function(targetDiv, caption, reverseGroup) {
 		$(tableData).each(function(i, columnGroup) {
 			var barGroup = $('<div class="bar-group"></div>');
 			$(columnGroup).each(function(j, cell) {
-				barGroup.append('<div class="bar item-' + j + '" style="height: ' +
-					Math.floor((cell - yAxisMin) / (yAxisMax - yAxisMin) * 100) + '%;"></div>');
+				var bar = $('<div class="bar item-' + j + '" value="' +
+					Math.floor((cell - yAxisMin) / (yAxisMax - yAxisMin) * 100) + '%"><span>' +
+					cell + '</span></div>');
+				
+				// CSS :hover won't work on IE
+				bar.hover(function() {
+					bar.find('span').css('display', 'block');
+				}, function() {
+					bar.find('span').css('display', 'none');
+				});
+				
+				barGroup.append(bar);
 			});
 			barsContainer.append(barGroup);
 		});
@@ -128,7 +153,7 @@ jQuery.fn.tableBarChart = function(targetDiv, caption, reverseGroup) {
 	
 	function layout() {
 		var defaultMargin = 10;
-		var yAxisWidth = 70;
+		var yAxisWidth = 50;
 		$('.y-axis').css('width', '100%');
 		$('.y-axis span').css('width', yAxisWidth).css('margin', '-' + defaultMargin + 'px 0 0 -' + (yAxisWidth + defaultMargin) + 'px');
 		var graphWidth = target.width() - (yAxisWidth + 2 * defaultMargin);
@@ -145,6 +170,7 @@ jQuery.fn.tableBarChart = function(targetDiv, caption, reverseGroup) {
 		$('.bar').css('width', barWidth);
 		for (var i = 0; i < legends.length; i++) {
 			$('.bar.item-' + i).css('left', i * (barWidth + 2));
+			animateBar(i);
 		}
 	}
 	

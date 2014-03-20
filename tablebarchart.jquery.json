@@ -1,0 +1,30 @@
+{
+	"name": "tablebarchart",
+	"version": "1.0.0",
+	"title": "Table Bar Chart",
+	"author": { 
+		"name": "Cam Hoang",
+		"email": "hnvcam@gmail.com",
+		"url": "http://wiki.aiwsolutions.net"
+	},
+	"licenses": [
+		{
+			"type": "GPLv2",
+			"url": "http://www.example.com/licenses/gpl.html"
+		}
+	],
+	"dependencies": { 
+		"jquery": "1.x" 
+	},
+	"description": "Simple jQuery plugin to render a bar chart from existing <table> contents. Very easy to use.",
+	"keywords": [
+		"table", 
+		"bar", 
+		"chart",
+		"animation"
+	],
+	"homepage": "http://wiki.aiwsolutions.net/gQEYw",
+	"docs": "http://wiki.aiwsolutions.net/gQEYw",
+	"demo": "http://wiki.aiwsolutions.net/gQEYw",
+	"download": "https://github.com/hnvcam/tablebarchart"	
+}
