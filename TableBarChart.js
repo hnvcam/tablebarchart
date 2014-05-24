@@ -105,7 +105,7 @@ jQuery.fn.tableBarChart = function(targetDiv, caption, reverseGroup) {
 	}
 	
 	function animateBar(index) {
-		$('.bar.item-' + index).each(function() {
+		target.find('.bar.item-' + index).each(function() {
 			var bar = $(this);
 			bar.css('height', 0);
 			var value = bar.attr('value');
@@ -154,22 +154,22 @@ jQuery.fn.tableBarChart = function(targetDiv, caption, reverseGroup) {
 	function layout() {
 		var defaultMargin = 10;
 		var yAxisWidth = 50;
-		$('.y-axis').css('width', '100%');
-		$('.y-axis span').css('width', yAxisWidth).css('margin', '-' + defaultMargin + 'px 0 0 -' + (yAxisWidth + defaultMargin) + 'px');
+		target.find('.y-axis').css('width', '100%');
+		target.find('.y-axis span').css('width', yAxisWidth).css('margin', '-' + defaultMargin + 'px 0 0 -' + (yAxisWidth + defaultMargin) + 'px');
 		var graphWidth = target.width() - (yAxisWidth + 2 * defaultMargin);
-		var graphHeight = target.height() - $('.caption').height() - $('.legend').height() - 3 * defaultMargin;
-		$('.graph').css('width', graphWidth).css('height', graphHeight);
-		var stepHeight = Math.floor((graphHeight - $('.x-axis').height() - 2 * defaultMargin) / (groupTitles.length + 1));	
-		$('.y-axis li').css('height', stepHeight).css('width', '100%');
-		var barGroupHeight = ($('.y-axis li').height() + 1) * (groupTitles.length + 1);
-		$('.bars').css('height', barGroupHeight).css('width', '100%');
+		var graphHeight = target.height() - target.find('.caption').height() - target.find('.legend').height() - 3 * defaultMargin;
+		target.find('.graph').css('width', graphWidth).css('height', graphHeight);
+		var stepHeight = Math.floor((graphHeight - target.find('.x-axis').height() - 2 * defaultMargin) / (groupTitles.length + 1));	
+		target.find('.y-axis li').css('height', stepHeight).css('width', '100%');
+		var barGroupHeight = (target.find('.y-axis li').height() + 1) * (groupTitles.length + 1);
+		target.find('.bars').css('height', barGroupHeight).css('width', '100%');
 		var barGroupWidth = graphWidth / groupTitles.length - 2 * defaultMargin;
-		$('.bar-group').css('width', barGroupWidth).css('margin', '0 ' + defaultMargin);
-		$('.x-axis li').css('width', barGroupWidth);
+		target.find('.bar-group').css('width', barGroupWidth).css('margin', '0 ' + defaultMargin);
+		target.find('.x-axis li').css('width', barGroupWidth);
 		var barWidth = barGroupWidth / legends.length - 2;
-		$('.bar').css('width', barWidth);
+		target.find('.bar').css('width', barWidth);
 		for (var i = 0; i < legends.length; i++) {
-			$('.bar.item-' + i).css('left', i * (barWidth + 2));
+			target.find('.bar.item-' + i).css('left', i * (barWidth + 2));
 			animateBar(i);
 		}
 	}
